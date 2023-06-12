@@ -56,7 +56,15 @@ class LinkedList
   end
 
   def find(value)
+    index = 0
+    tmp = @head
+    @size.times do
+      return index if tmp.value == value
 
+      index += 1
+      tmp = tmp.next_node
+    end
+    nil
   end
 
   def to_s
