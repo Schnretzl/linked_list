@@ -48,7 +48,11 @@ class LinkedList
   end
 
   def pop
-
+    tmp = @head
+    (@size - 1).times do
+      tmp = tmp.next_node
+    end
+    @tail = tmp
   end
 
   def contains?(value)
