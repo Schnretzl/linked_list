@@ -47,9 +47,12 @@ class LinkedList
 
   def contains?(value)
     tmp = @head
-    (@size).times do
+    @size.times do
+      return true if tmp.value == value
+
       tmp = tmp.next_node
     end
+    false
   end
 
   def find(value)
