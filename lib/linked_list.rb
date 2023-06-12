@@ -68,7 +68,12 @@ class LinkedList
   end
 
   def to_s
-
+    tmp = @head
+    return_str = ''
+    size.times do
+      return_str.concat("( #{tmp.value} ) -> ")
+    end
+    return_str.concat(nil)
   end
 
 end
