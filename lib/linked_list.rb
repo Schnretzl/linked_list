@@ -32,15 +32,19 @@ class LinkedList
   end
 
   def head
-
+    @head
   end
 
   def tail
-
+    @tail
   end
 
   def at(index)
-
+    tmp = @head
+    (index - 1).times do
+      tmp = tmp.next_node
+    end
+    tmp
   end
 
   def pop
