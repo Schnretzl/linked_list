@@ -10,12 +10,12 @@ class LinkedList
   end
 
   def append(value)
-    @num_nodes += 1
     if @head.nil?
       prepend(value)
     else
+      @size += 1
       @tail = Node.new(value)
-      Node tmp = @head
+      tmp = @head
       tmp = tmp.next_node until tmp.next_node.nil?
       tmp.next_node = Node.new(value)
     end
@@ -30,7 +30,7 @@ class LinkedList
 
   def at(index)
     tmp = @head
-    (index - 1).times do
+    index.times do
       tmp = tmp.next_node
     end
     tmp
@@ -42,7 +42,7 @@ class LinkedList
       tmp = tmp.next_node
     end
     @tail = tmp
-    size -= 1
+    @size -= 1
   end
 
   def contains?(value)
@@ -72,8 +72,8 @@ class LinkedList
     return_str = ''
     size.times do
       return_str.concat("( #{tmp.value} ) -> ")
+      tmp = tmp.next_node
     end
-    return_str.concat(nil)
+    return_str.concat('nil')
   end
-
 end
