@@ -15,16 +15,16 @@ class LinkedList
     else
       @tail = Node.new(value)
       Node tmp = @head
-      until tmp.next_node.nil?
-        tmp = tmp.next_node
-      end
+      tmp = tmp.next_node until tmp.next_node.nil?
       tmp.next_node = Node.new(value)
-
     end
   end
 
   def prepend(value)
-    @head = Node.new(value)
+    @size += 1
+    tmp = Node.new(value)
+    tmp.next_node = @head
+    @head = tmp
   end
 
   def size
@@ -53,10 +53,14 @@ class LinkedList
       tmp = tmp.next_node
     end
     @tail = tmp
+    size -= 1
   end
 
   def contains?(value)
-
+    tmp = @head
+    (@size).times do
+      tmp = tmp.next_node
+    end
   end
 
   def find(value)
