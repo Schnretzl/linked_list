@@ -1,6 +1,7 @@
 require_relative 'node.rb'
 
 class LinkedList
+  attr_reader :size, :head, :tail
 
   def initialize
     @size = 0
@@ -25,18 +26,6 @@ class LinkedList
     tmp = Node.new(value)
     tmp.next_node = @head
     @head = tmp
-  end
-
-  def size
-    @num_nodes
-  end
-
-  def head
-    @head
-  end
-
-  def tail
-    @tail
   end
 
   def at(index)
