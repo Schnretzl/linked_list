@@ -14,10 +14,13 @@ class LinkedList
       prepend(value)
     else
       @size += 1
-      tmp = @head
-      tmp = tmp.next_node until tmp.next_node.nil?
-      tmp.next_node = Node.new(value)
-      @tail = tmp.next_node
+      # tmp = @head
+      # tmp = tmp.next_node until tmp.next_node.nil?
+      # tmp.next_node = Node.new(value)
+      # @tail = tmp.next_node
+      new_node = Node.new(value)
+      @tail.next_node = new_node
+      @tail = new_node
     end
   end
 
@@ -26,6 +29,7 @@ class LinkedList
     tmp = Node.new(value)
     tmp.next_node = @head
     @head = tmp
+    @tail.nil? && @tail = tmp
   end
 
   def at(index)
@@ -37,10 +41,6 @@ class LinkedList
   end
 
   def pop
-    # tmp = @head
-    # (@size - 2).times do
-    #   tmp = tmp.next_node
-    # end
     tmp = at(@size - 2)
     @tail = tmp
     @tail.next_node = nil
@@ -103,15 +103,6 @@ class LinkedList
       pop
     else
       @size -= 1
-      # tmp = @head
-      # (index - 1).times do
-      #   tmp = tmp.next_node
-      # end
-      # tmp2 = tmp
-      # 2.times do
-      #   tmp2 = tmp2.next_node
-      # end
-      # tmp.next_node = tmp2
       at(index - 1).next_node = at(index + 1)
     end
   end
