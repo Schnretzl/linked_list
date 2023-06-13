@@ -76,4 +76,22 @@ class LinkedList
     end
     return_str.concat('nil')
   end
+
+  def insert_at(index, value)
+    if index > (@size - 1) || index.negative?
+      puts 'Error: Index out of bounds'
+    elsif index.zero?
+      prepend(value)
+    else
+      @size += 1
+      tmp = @head
+      (index - 1).times do
+        tmp = tmp.next_node
+      end
+      tmp2 = tmp.next_node
+      new_node = Node.new(value)
+      tmp.next_node = new_node
+      new_node.next_node = tmp2
+    end
+  end
 end
