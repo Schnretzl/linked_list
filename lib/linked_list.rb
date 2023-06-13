@@ -37,10 +37,11 @@ class LinkedList
   end
 
   def pop
-    tmp = @head
-    (@size - 2).times do
-      tmp = tmp.next_node
-    end
+    # tmp = @head
+    # (@size - 2).times do
+    #   tmp = tmp.next_node
+    # end
+    tmp = at(@size - 2)
     @tail = tmp
     @tail.next_node = nil
     @size -= 1
@@ -87,14 +88,11 @@ class LinkedList
       append(value)
     else
       @size += 1
-      tmp = @head
-      (index - 1).times do
-        tmp = tmp.next_node
-      end
-      tmp2 = tmp.next_node
+      before = at(index - 1)
       new_node = Node.new(value)
-      tmp.next_node = new_node
-      new_node.next_node = tmp2
+      new_node.next_node = before.next_node
+      before.next_node = new_node
+
     end
   end
 
@@ -102,18 +100,19 @@ class LinkedList
     if index > (@size - 1) || index.negative?
       puts 'Error: Index out of bounds'
     elsif index == (@size - 1)
-      self.pop
+      pop
     else
       @size -= 1
-      tmp = @head
-      (index - 1).times do
-        tmp = tmp.next_node
-      end
-      tmp2 = tmp
-      2.times do
-        tmp2 = tmp2.next_node
-      end
-      tmp.next_node = tmp2
+      # tmp = @head
+      # (index - 1).times do
+      #   tmp = tmp.next_node
+      # end
+      # tmp2 = tmp
+      # 2.times do
+      #   tmp2 = tmp2.next_node
+      # end
+      # tmp.next_node = tmp2
+      at(index - 1).next_node = at(index + 1)
     end
   end
 end
