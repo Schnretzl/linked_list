@@ -14,10 +14,6 @@ class LinkedList
       prepend(value)
     else
       @size += 1
-      # tmp = @head
-      # tmp = tmp.next_node until tmp.next_node.nil?
-      # tmp.next_node = Node.new(value)
-      # @tail = tmp.next_node
       new_node = Node.new(value)
       @tail.next_node = new_node
       @tail = new_node
